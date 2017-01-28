@@ -1,5 +1,25 @@
 var DemoManager = (function() {
 
+    function handleFilter(evt) {
+        var markerType = $(evt.currentTarget).data("type");
+        markerCluster.clearMarkers();
+        for (var i = 0; i < markers.length; i++) {
+
+            if(markerType !== "all") {
+                if(markers[i].color !== markerType) {
+                    markers[i].setMap(null);
+                } else {
+                    markers[i].setMap(map);
+                    markerCluster.addMarker(markers[i]);
+                }
+            } else {
+                markers[i].setMap(map);
+                markerCluster.addMarker(markers[i]);
+            }
+        }
+
+    }
+
     function init(opts) {
         map = new google.maps.Map(document.getElementById('map'), {
             center: new google.maps.LatLng(40.6331,-89.3985),
@@ -11,7 +31,7 @@ var DemoManager = (function() {
             var iterations = Math.floor(Math.random() * (25 - 14 + 1)) + 14;
 
             for(var i = 0; i < iterations; i++) {
-                var color = Math.floor(Math.random() * (icons.length - 1));
+                var color = Math.floor(Math.random() * (icons.length));
                 var lat = coords[locale].lat.min + (Math.random() * (coords[locale].lat.max - coords[locale].lat.min));
                 var long = coords[locale].long.min + (Math.random() * (coords[locale].long.max - coords[locale].long.min));
 
@@ -22,21 +42,22 @@ var DemoManager = (function() {
                     },
                     color: color
                 });
-                console.log(locations);
             }
         }
 
-        var markers = locations.map(function(location, i) {
-            console.log(location);
+        markers = locations.map(function(location, i) {
             return new google.maps.Marker({
                 position: location.position,
                 icon: icons[location.color],
-                map: map
+                map: map,
+                color: location.color
             });
         });
 
-        var markerCluster = new MarkerClusterer(map, markers,
+        markerCluster = new MarkerClusterer(map, markers,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
+        $('body').on('click touch','.filter',handleFilter.bind(this));
     }
 
     var
@@ -48,6 +69,8 @@ var DemoManager = (function() {
             iconBase + 'red-circle-lv.png'
         ],
         map,
+        markers,
+        markerCluster,
         coords = {
             champaign: {
                 lat: {
