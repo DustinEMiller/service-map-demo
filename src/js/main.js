@@ -63,10 +63,10 @@ var DemoManager = (function() {
     var
         iconBase = 'https://maps.google.com/mapfiles/kml/paddle/',
         icons = [
-            iconBase + 'purple-circle-lv.png',
-            iconBase + 'grn-circle-lv.png',
-            iconBase + 'ylw-circle-lv.png',
-            iconBase + 'red-circle-lv.png'
+            iconBase + 'pink-circle_maps.png',
+            iconBase + 'grn-circle_maps.png',
+            iconBase + 'ylw-circle_maps.png',
+            iconBase + 'red-circle_maps.png'
         ],
         map,
         markers,
