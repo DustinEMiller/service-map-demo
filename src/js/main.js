@@ -61,12 +61,12 @@ var DemoManager = (function() {
     }
 
     var
-        iconBase = 'https://maps.google.com/mapfiles/kml/paddle/',
+        iconBase = 'img/',
         icons = [
-            iconBase + 'pink-circle_maps.png',
-            iconBase + 'grn-circle_maps.png',
-            iconBase + 'ylw-circle_maps.png',
-            iconBase + 'red-circle_maps.png'
+            iconBase + 'ophthalmologist.png',
+            iconBase + 'dentist.png',
+            iconBase + 'lung.png',
+            iconBase + 'hospital.png'
         ],
         map,
         markers,
