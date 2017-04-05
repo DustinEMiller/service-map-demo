@@ -25,13 +25,14 @@
             </div>
             <div class="small-4 columns">
                 <div id="filters">
-                    <ul>
-                        <li><a class="filter" data-type="0">Show me only <img src="img/ophthalmologist.png"/></a></li>
-                        <li><a class="filter" data-type="1">Show me only <img src="img/dentist.png"/></a></li>
-                        <li><a class="filter" data-type="2">Show me only <img src="img/lung.png"/></a></li>
-                        <li><a class="filter" data-type="3">Show me only <img src="img/hospital.png"/></a></li>
-                        <li><a class="filter" data-type="all">Show me all places</a></li>
-                    </ul>
+                    <label for="type">Type</label>
+                    <select id="type" name="type">
+                        <option value="all">All</option>
+                    </select>
+                    <label for="specialty">Specialty</label>
+                    <select id="specialty" name="specialty">
+                        <option value="all">All</option>
+                    </select>
                 </div>
             </div>
         </div>
