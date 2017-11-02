@@ -72,7 +72,7 @@ var DemoManager = (function() {
         //var bounds = map.getBounds().toJSON();
         //"http://askshirley.local:8080/providers/markers/pD5ltovTQHNvhP32e2zQ/type/all/specialty/all/minlat/"+bounds.south+"/maxlat/"+bounds.north+"/minlong/"+bounds.west+"/maxlong/"+bounds.east,
         $.ajax({
-            url: "http://askshirley.org/providers/markers/pD5ltovTQHNvhP32e2zQ",
+            url: "https://askshirley.org/providers/markers/pD5ltovTQHNvhP32e2zQ",
             dataType: 'text',
             type: 'POST',
             data: {
