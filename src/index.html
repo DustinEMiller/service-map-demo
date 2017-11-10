@@ -45,7 +45,18 @@
         <script id="location" type="text/x-handlebars-template">
             <div class='address-wrapper'>
                 <h2>{{name}}</h2>
-                <p>{{type}}<br>{{specialty}}{{#if phone}}<br>Phone: {{phone}}{{/if}}{{#if fax}}<br>Fax: {{fax}}{{/if}}</p>
+                <p>
+                    {{#if address1}}<br>{{address1}}{{/if}}
+                    {{#if address2}}<br>{{address2}}{{/if}}
+                    <br>{{city}}, {{state}} {{zip}}
+                    {{#if phone}}<br>Phone: {{phone}}{{/if}}
+                    {{#if fax}}<br>Fax: {{fax}}{{/if}}
+                    {{#if hours}}<br>Hours: {{hours}}{{/if}}
+                    {{#if gender}}<br>Gender: {{gender}}{{/if}}
+                    {{#if wheelchair}}<br>Wheelchair Accessible: {{wheelchair}}{{/if}}
+                    {{#if eprescribe}}<br>Eprescribe: {{eprescribe}}{{/if}}
+                    <br>Specialties: {{specialty_list}}
+                </p>
             </div>
         </script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>

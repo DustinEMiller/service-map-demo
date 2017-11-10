@@ -24,6 +24,18 @@ var DemoManager = (function() {
                 position: myLatlng,
                 title: data.full_name,
                 type: data.provider_type,
+                gender: data.gender,
+                eprescribe: data.eprescribe,
+                wheelchair: data.wheelchair_accessible,
+                address1: data.address,
+                address2: data.address2,
+                city: data.city,
+                state: data.state,
+                zip: data.zip,
+                phone: data.phone_number,
+                fax: data.fax_number,
+                hours: data.hours_operation,
+                specialty_list: data.specialty_list_all,
                 specialty: data.specialty,
                 icon: 'img/'+icon+".png"
             });
@@ -36,10 +48,37 @@ var DemoManager = (function() {
     }
 
     function infoPanel(marker) {
-        var template = Handlebars.compile($('#location').html());
+        var template = Handlebars.compile($('#location').html()),
+            wheelchair,
+            eprescibe;
+
+        if(marker.wheelchair == 1) {
+            wheelchair = "Yes"
+        } else if (marker.wheelchair == 0) {
+            wheelchair = "No"
+        }
+
+        if(marker.eprescribe == 1) {
+            eprescribe = "Yes"
+        } else if (marker.eprescribe == 0) {
+            eprescribe = "No"
+        }
+
         var context = {
             name: marker.title,
             type: marker.type,
+            gender: marker.gender,
+            eprescribe: eprescribe,
+            wheelchair: wheelchair,
+            address1: marker.address1,
+            address2: marker.address2,
+            city: marker.city,
+            state: marker.state,
+            zip: marker.zip,
+            phone: marker.phone,
+            fax: marker.fax,
+            hours: marker.hours,
+            specialty_list: marker.specialty_list,
             specialty: marker.specialty
         };
         $('#loc').html(template(context));
@@ -133,9 +172,6 @@ var DemoManager = (function() {
             imagePath: 'https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/images/m',
             maxZoom: 13
         });
-        //google.maps.event.addListener(map, 'bounds_changed', function() {
-            //getProviders();
-        //});
 
         $('body').on('change','#type',handleType);
         $('body').on('change','#specialty',handleSpecialty);
